@@ -10,13 +10,14 @@ const TeamMembers = props => {
     }
 
     return (
-        <div classname='team-list'>
+        <div className='team-list'>
             {props.team.map(teamMember => {
                 return (
-                    <div classname='team-member-card'>
-                        <h1 classname='name'>{teamMember.name}</h1>
+                    <div key={teamMember.email} className='team-member-card'>
+                        <h2 className='name'>{teamMember.name}</h2>
                         <p className='role'>Role: {teamMember.role}</p>
                         <p className='email'>Contact: {teamMember.email}</p>
+                        <button onClick={props.editMemberState(teamMember)} type='button'>Edit</button>
                     </div>
                 )
             })}

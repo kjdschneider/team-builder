@@ -5,6 +5,19 @@ import TeamMembers from './components/TeamMembers';
 
 function App() {
   const [team, setTeam] = useState([{name: 'KJ', email: 'kjdschneider@gmail.com', role: 'Team Lead'}]);
+  const [memberToEdit, setMemberToEdit] = useState({});
+
+  const editMemberState = teamMember => {
+    setMemberToEdit(teamMember);
+  }
+
+  const isEditing = () => {
+    if (memberToEdit !== {}) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const addTeamMember = teamMember => {
     const newTeamMember = {
@@ -20,9 +33,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>In Progress</h1>
-      <TeamMemberForm addTeamMember={addTeamMember} />
-      <TeamMembers team={team} />
+      <h1>Team List!</h1>
+      <TeamMemberForm memberToEdit={memberToEdit} addTeamMember={addTeamMember} />
+      <TeamMembers editMemberState={editMemberState} team={team} />
     </div>
   );
 }
